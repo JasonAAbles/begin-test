@@ -1,2 +1,0 @@
-# begin-test
-Begin app
