@@ -1,5 +1,8 @@
 // learn more about HTTP functions here: https://arc.codes/primitives/http
-exports.handler = async function http (req) {
+let begin = require('@architect/functions')
+
+export const handler = async function http (req) {
+  let requestBody = begin.http.helpers.bodyParser(req);
   return {
     statusCode: 200,
     headers: {
@@ -7,6 +10,8 @@ exports.handler = async function http (req) {
       'content-type': 'text/html; charset=utf8'
     },
     body: JSON.stringify({
+      context: context,
+      requestBody: requestBody,
       "name": "jables",
       "testing": "serverless",
       "number": 23
